@@ -1,0 +1,79 @@
+{
+    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "name": {
+            "type": "string"
+        },
+        "imageName": {
+            "type": "string"
+        },
+        "location": {
+            "type": "string"
+        },
+        "imagePublisher": {
+            "type": "string"
+        },
+        "imageOffer": {
+            "type": "string"
+        },
+        "imageSku": {
+            "type": "string"
+        },
+        "version": {
+            "type": "string"
+        },
+        "vmSize": {
+            "type": "string"
+        },
+        "osDiskSizeGB": {
+            "type": "int"
+        },
+        "userAssignedIdentities": {
+            "type": "array"
+        }
+    },
+    "variables": {},
+    "resources": [
+        {
+            "type": "Microsoft.VirtualMachineImages/imageTemplates",
+            "apiVersion": "2022-07-01",
+            "dependsOn": [],
+            "name": "[parameters('name')]",
+            "location": "[parameters('location')]",
+            "properties": {
+                "vmProfile": {
+                    "vmSize": "[parameters('vmSize')]",
+                    "osDiskSizeGB": "[parameters('osDiskSizeGB')]",
+                    "userAssignedIdentities": "[parameters('userAssignedIdentities')]"
+                },
+                "source": {
+                    "type": "PlatformImage",
+                    "publisher": "[parameters('imagePublisher')]",
+                    "offer": "[parameters('imageOffer')]",
+                    "sku": "[parameters('imageSku')]",
+                    "version": "[parameters('version')]"
+                },
+                "distribute": [
+                    {
+                        "type": "SharedImage",
+                        "galleryImageId": "/subscriptions/cbf8b966-9488-4fc7-a133-b65c3b0285a8/resourceGroups/test/providers/Microsoft.Compute/galleries/shared_image_gallery/images/Windows_2022_image_defination_version/versions/0.0.1",
+                        "replicationRegions": [
+                            "uksouth"
+                        ],
+                        "excludeFromLatest": false,
+                        "runOutputName": "runOutputImageVersion"
+                    }
+                ]
+            },
+            "tags": {},
+            "identity": {
+                "type": "UserAssigned",
+                "userAssignedIdentities": {
+                    "/subscriptions/cbf8b966-9488-4fc7-a133-b65c3b0285a8/resourceGroups/test/providers/Microsoft.ManagedIdentity/userAssignedIdentities/aib": {}
+                }
+            }
+        }
+    ],
+    "outputs": {}
+}

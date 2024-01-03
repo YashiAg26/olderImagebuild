@@ -1,0 +1,36 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "name": {
+            "value": "cishardenedimage"
+        },
+        "imageName": {
+            "value": "cishardenedimage"
+        },
+        "location": {
+            "value": "uksouth"
+        },
+        "imagePublisher": {
+            "value": "MicrosoftWindowsServer"
+        },
+        "imageOffer": {
+            "value": "WindowsServer"
+        },
+        "imageSku": {
+            "value": "2022-datacenter-azure-edition"
+        },
+        "version": {
+            "value": "latest"
+        },
+        "vmSize": {
+            "value": "Standard_DS2_v2"
+        },
+        "osDiskSizeGB": {
+            "value": 128
+        },
+        "userAssignedIdentities": {
+            "value": []
+        }
+    }
+}
