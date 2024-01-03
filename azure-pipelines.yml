@@ -10,29 +10,29 @@ pool:
   vmImage: windows-latest
  
 steps:
--   task: AzureCLI@2
-    displayName: 'Azure CLI - Trigger Image Template Build'
-    inputs:
-      azureSubscription: 'anugrah pay as you go(1)(cbf8b966-9488-4fc7-a133-b65c3b0285a8)'
-      scriptType: 'bash'
-      scriptLocation: 'inlineScript'
-      inlineScript: |
-        az resource invoke-action \
-        --resource-group test \
-        --resource-type Microsoft.VirtualMachineImages/imageTemplates \
-        -n cishardenedimage \
-        --action Run
+# -   task: AzureCLI@2
+#     displayName: 'Azure CLI - Trigger Image Template Build'
+#     inputs:
+#       azureSubscription: 'anugrah pay as you go(1)(cbf8b966-9488-4fc7-a133-b65c3b0285a8)'
+#       scriptType: 'bash'
+#       scriptLocation: 'inlineScript'
+#       inlineScript: |
+#         az resource invoke-action \
+#         --resource-group test \
+#         --resource-type Microsoft.VirtualMachineImages/imageTemplates \
+#         -n cishardenedimage \
+#         --action Run
 
-# - task: AzureResourceManagerTemplateDeployment@3
-#   inputs:
-#     deploymentScope: 'Resource Group'
-#     azureResourceManagerConnection: 'anugrah pay as you go(1)(cbf8b966-9488-4fc7-a133-b65c3b0285a8)'
-#     subscriptionId: 'cbf8b966-9488-4fc7-a133-b65c3b0285a8'
-#     action: 'Create Or Update Resource Group'
-#     resourceGroupName: 'test'
-#     location: 'UK South'
-#     templateLocation: 'Linked artifact'
-#     csmFile: 'template.json'
-#     csmParametersFile: 'parameters.json'
-#     deploymentMode: 'Incremental'
+- task: AzureResourceManagerTemplateDeployment@3
+  inputs:
+    deploymentScope: 'Resource Group'
+    azureResourceManagerConnection: 'anugrah pay as you go(1)(cbf8b966-9488-4fc7-a133-b65c3b0285a8)'
+    subscriptionId: 'cbf8b966-9488-4fc7-a133-b65c3b0285a8'
+    action: 'Create Or Update Resource Group'
+    resourceGroupName: 'test'
+    location: 'UK South'
+    templateLocation: 'Linked artifact'
+    csmFile: 'template.json'
+    csmParametersFile: 'parameters.json'
+    deploymentMode: 'Incremental'
 
