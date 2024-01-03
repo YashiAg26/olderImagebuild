@@ -12,13 +12,13 @@
             "value": "uksouth"
         },
         "imagePublisher": {
-            "value": "MicrosoftWindowsServer"
+            "value": "center-for-internet-security-inc"
         },
         "imageOffer": {
-            "value": "WindowsServer"
+            "value": "cis-windows-server-2022-l2"
         },
         "imageSku": {
-            "value": "2022-datacenter-azure-edition"
+            "value": "cis-windows-server-2022-l2-gen2"
         },
         "version": {
             "value": "latest"
